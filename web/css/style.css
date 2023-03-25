@@ -1,0 +1,189 @@
+@font-face {
+  font-family: "DM Sans";
+  src: url(../fonts/DMSans-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url(../fonts/DMSans-Bold.ttf);
+  font-weight: 700;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  background-color: #000;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+/** Layout **/
+body {
+  display: flex;
+  flex-direction: column;
+}
+section.contents {
+  flex: 1 2 auto;
+  flex-direction: row-reverse;
+  display: flex;
+}
+section.contents aside {
+  flex: 0;
+  display: flex;
+  flex-direction: column;
+  order: -1;
+}
+section.contents aside fieldset {
+  /* display: flex; */
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+section.contents aside .align-top {
+  align-self: flex-start;
+}
+section.contents article {
+  flex: 1;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+section.contents .buttons {
+  margin-top: 2rem;
+  margin-right: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+/** Title */
+h1 {
+  font-weight: 700;
+  font-size: 48px;
+  padding: 0;
+  line-height: 0.9em;
+  letter-spacing: -2px;
+  margin: 0 0 30px 0;
+}
+
+/** Controls for the demo (left column) */
+#demo_controls {
+  padding: 40px 50px 60px 20px;
+  z-index: 10;
+}
+#demo_controls fieldset {
+  padding: 0;
+  border: none;
+  width: 210px;
+}
+
+#demo_controls input {
+  display: block;
+  width: 100px;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+/** Keep controls that  */
+#demo_controls .tight input {
+  margin: 0px;
+}
+#demo_controls input[type="button"] {
+  line-height: 10px;
+  font-size: 14px;
+  border-radius: 15px;
+  border: 1px solid #aaa;
+  border-style: outset;
+  background-color: #fff;
+  height: 30px;
+  color: #555;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+#demo_controls input[type="button"]:hover {
+  /* .active:hover background-color: #96B6E3;*/
+  border-color: #1c68d4;
+  background-color: #1c68d4;
+  color: white;
+}
+#demo_controls input[type="button"].active {
+  border-color: #1c68d4;
+  background-color: #1c68d4;
+  color: white;
+}
+#demo_controls input#value {
+  font-size: 32px;
+  line-height: 1em;
+  min-height: 30px;
+
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  color: #888;
+}
+#demo_controls input#increment {
+  /* Center vertically next to taller input#value */
+  position: relative;
+  margin-right: 1rem;
+  /* top: -6px; */
+}
+#demo_controls .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.value-input {
+  width: 100%;
+}
+
+/** The style for the DIV where flutter will be rendered, and the CSS fx */
+#flutter_target {
+  background-color: black;
+  /* border: 3px solid #aaa; */
+  border: 1.334vh solid #141414;
+  width: 440px;
+  height: 520px;
+  border-radius: 25px;
+  transition: all 150ms ease-in;
+  box-shadow: rgba(88, 99, 248, 0.4) -5px 5px, rgba(88, 99, 170, 0.3) -10px 10px,
+    rgba(88, 99, 170, 0.2) -15px 15px, rgba(88, 99, 170, 0.1) -20px 20px,
+    rgba(88, 99, 170, 0.05) -25px 25px;
+}
+
+#flutter_target.resize {
+  width: 480px;
+  height: 320px;
+}
+#flutter_target.spin {
+  animation: spin 6400ms ease-in-out infinite;
+}
+#flutter_target.shadow {
+  position: relative;
+}
+#flutter_target.shadow::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: calc(100% - 1px);
+  left: 0;
+  height: 1px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: -1;
+  transform: rotateX(80deg);
+  box-shadow: 0px 0px 60px 38px rgb(0 0 0 / 25%);
+}
+#flutter_target.mirror {
+  -webkit-box-reflect: below 0px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
